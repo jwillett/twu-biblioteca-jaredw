@@ -21,8 +21,13 @@ public class BibliotecaApp {
     }
 
     public void promptMainMenu() {
-        System.out.println("Select an option by entering the appropriate number:");
-        System.out.println("List Books - 1");
+
+        printMenuOptions();
+
+        processUserInput();
+    }
+
+    public void processUserInput() {
         Scanner scanner = new Scanner(System.in);
         String option = scanner.nextLine();
         while (!option.equals("1")) {
@@ -30,6 +35,11 @@ public class BibliotecaApp {
             option = scanner.nextLine();
         }
         listBooks();
+    }
+
+    public void printMenuOptions() {
+        System.out.println("Select an option by entering the appropriate number:");
+        System.out.println("List Books - 1");
     }
 
     public void listBooks() {
