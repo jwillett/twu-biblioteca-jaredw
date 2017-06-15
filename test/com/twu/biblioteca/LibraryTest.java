@@ -12,7 +12,7 @@ import org.junit.Before;
 
 public class LibraryTest {
 
-    private final ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+    private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     private BibliotecaApp testApp = new BibliotecaApp();
 
     @Before
@@ -42,6 +42,28 @@ public class LibraryTest {
         System.setIn(new ByteArrayInputStream("1".getBytes()));
         testApp.promptMainMenu();
         assertEquals(outStream.toString(), expectedString0 + expectedString1 + expectedString2);
+    }
+
+    @Test
+    public void testRenewingOutputStream () {
+        System.out.print("a string");
+        assertEquals(outStream.toString(), "a string");
+        outStream.reset();
+        System.out.print("something else");
+        assertEquals(outStream.toString(), "something else");
+    }
+
+    @Test
+    public void testSelectingInvalidMenuOption() {
+        String expectedString0 = "Select an option by entering the appropriate number:\nList Books - 1\n";
+        String expectedString1 = "Select a valid option!\n";
+        String expectedString2 = "Moby Dick\tHerman Melville\t1851\n";
+        String expectedString3 = "Harry Potter\tJ.K. Rowling\t1997\n";
+        String sumExpectedString = expectedString0 + expectedString1 + expectedString2 + expectedString3;
+        String userInputSim = "xyz\n1";
+        System.setIn(new ByteArrayInputStream(userInputSim.getBytes()));
+        testApp.promptMainMenu();
+        assertEquals(outStream.toString(),sumExpectedString);
     }
 
 }

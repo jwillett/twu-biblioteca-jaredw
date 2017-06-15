@@ -24,10 +24,12 @@ public class BibliotecaApp {
         System.out.println("Select an option by entering the appropriate number:");
         System.out.println("List Books - 1");
         Scanner scanner = new Scanner(System.in);
-        int option = scanner.nextInt();
-        if (option == 1) {
-            listBooks();
+        String option = scanner.nextLine();
+        while (!option.equals("1")) {
+            System.out.println("Select a valid option!");
+            option = scanner.nextLine();
         }
+        listBooks();
     }
 
     public void listBooks() {
