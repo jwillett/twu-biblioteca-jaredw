@@ -14,6 +14,7 @@ public class Menu {
     private void initOptions(BibliotecaApp biblioteca) {
         menuOptions.add(new MenuOptionListBooks(biblioteca.getBooks()));
         menuOptions.add(new MenuOptionQuit());
+        menuOptions.add(new MenuOptionCheckoutBook(biblioteca.getBooks()));
     }
 
     public void printMenuOptions() {

@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -38,6 +39,20 @@ public class MenuOptionTest {
         MenuOption quit = new MenuOptionQuit();
         quit.execute();
         assertEquals(outStream.toString(), "");
+    }
+
+    @Test
+    public void testCheckoutBookOptionRemovesBookFromListing() {
+        BibliotecaApp testApp = new BibliotecaApp();
+        Book book_to_checkout = testApp.getBooks().get(0);
+        String expectedString = "Harry Potter\tJ.K. Rowling\t1997\n";
+        MenuOption checkout_book = new MenuOptionCheckoutBook(testApp.getBooks());
+        MenuOption list_books = new MenuOptionListBooks(testApp.getBooks());
+        System.setIn(new ByteArrayInputStream("1".getBytes()));
+        checkout_book.execute();
+        outStream.reset();
+        list_books.execute();
+        assertEquals(outStream.toString(), expectedString);
     }
 
 }

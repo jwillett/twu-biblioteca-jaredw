@@ -13,9 +13,9 @@ public class MenuOptionListBooks extends MenuOption {
 
     public void execute() {
         for (Book book : books) {
-            System.out.print(book.getTitle() + '\t');
-            System.out.print(book.getAuthor() + '\t');
-            System.out.println(book.getYear());
+            if (!book.isCheckedOut()) {
+                System.out.println(book.getBookInfo());
+            }
         }
     }
 
