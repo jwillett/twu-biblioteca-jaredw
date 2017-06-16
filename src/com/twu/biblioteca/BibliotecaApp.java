@@ -21,25 +21,12 @@ public class BibliotecaApp {
     }
 
     public void promptMainMenu() {
+        Menu mainMenu = new Menu();
 
-        printMenuOptions();
+        mainMenu.printMenuOptions();
 
-        processUserInput();
-    }
+        mainMenu.processUserInput(this);
 
-    public void processUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        String option = scanner.nextLine();
-        while (!option.equals("1")) {
-            System.out.println("Select a valid option!");
-            option = scanner.nextLine();
-        }
-        listBooks();
-    }
-
-    public void printMenuOptions() {
-        System.out.println("Select an option by entering the appropriate number:");
-        System.out.println("List Books - 1");
     }
 
     public void listBooks() {
