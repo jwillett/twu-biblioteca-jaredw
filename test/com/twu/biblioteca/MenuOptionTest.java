@@ -19,18 +19,25 @@ public class MenuOptionTest {
 
     @Test
     public void testMenuOptionHasName() {
-        MenuOption quit = new MenuOption("Quit");
+        MenuOption quit = new MenuOptionQuit();
         assertEquals(quit.getName(), "Quit");
     }
 
     @Test
     public void testMenuOptionForListBooksListsBooks() {
         BibliotecaApp testApp = new BibliotecaApp();
-        MenuOption list_books = new MenuOption("List Books", testApp.getBooks());
+        MenuOption list_books = new MenuOptionListBooks(testApp.getBooks());
         list_books.execute();
         String expectedString1 = "Moby Dick\tHerman Melville\t1851\n";
         String expectedString2 = "Harry Potter\tJ.K. Rowling\t1997\n";
         assertEquals(outStream.toString(), expectedString1 + expectedString2);
+    }
+
+    @Test
+    public void testQuitMenuOptionPrintsNothing() {
+        MenuOption quit = new MenuOptionQuit();
+        quit.execute();
+        assertEquals(outStream.toString(), "");
     }
 
 }

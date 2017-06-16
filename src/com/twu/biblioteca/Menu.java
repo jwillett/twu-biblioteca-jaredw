@@ -12,7 +12,8 @@ public class Menu {
     }
 
     private void initOptions(BibliotecaApp biblioteca) {
-        menuOptions.add(new MenuOption("List Books", biblioteca.getBooks()));
+        menuOptions.add(new MenuOptionListBooks(biblioteca.getBooks()));
+        menuOptions.add(new MenuOptionQuit());
     }
 
     public void printMenuOptions() {
@@ -22,13 +23,25 @@ public class Menu {
         }
     }
 
-    public void processUserInput(BibliotecaApp biblioteca) {
+    public void processUserInput() {
         Scanner scanner = new Scanner(System.in);
-        String option = scanner.nextLine();
-        while (!option.equals("1")) {
-            System.out.println("Select a valid option!");
-            option = scanner.nextLine();
+        MenuOption selectedOption = null;
+
+        // test if valid int
+        // test if int valid index
+        // if both, execute
+        // else, throw error message
+        // loop forever (only quit breaks out)
+
+        while ((selectedOption == null) || (!selectedOption.getName().equals("Quit"))) {
+            String option = scanner.nextLine();
+            try {
+                int optionNumber = Integer.parseInt(option);
+                selectedOption = menuOptions.get(optionNumber - 1);
+                selectedOption.execute();
+            } catch (Exception e) {
+                System.out.println("Select a valid option!");
+            }
         }
-        biblioteca.listBooks();
     }
 }

@@ -34,8 +34,6 @@ public class LibraryTest {
         assertEquals(outStream.toString(), expectedString1 + expectedString2);
     }
 
-
-
     @Test
     public void testRenewingOutputStream () {
         System.out.print("a string");

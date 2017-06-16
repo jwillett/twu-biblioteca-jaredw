@@ -24,13 +24,12 @@ public class BibliotecaApp {
         System.out.println("Welcome to Biblioteca!");
     }
 
-    public void promptMainMenu() {
+    private void promptMainMenu() {
         Menu mainMenu = new Menu(this);
 
         mainMenu.printMenuOptions();
 
-        // TODO: refactor this
-        mainMenu.processUserInput(this);
+        mainMenu.processUserInput();
 
     }
 
