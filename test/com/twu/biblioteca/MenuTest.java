@@ -12,7 +12,8 @@ import static org.junit.Assert.assertEquals;
 public class MenuTest {
 
     private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-    private Menu mainMenu = new Menu();
+    private BibliotecaApp testApp = new BibliotecaApp();
+    private Menu mainMenu = new Menu(testApp);
 
     @Before
     public void setUp() {

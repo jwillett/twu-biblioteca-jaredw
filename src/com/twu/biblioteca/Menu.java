@@ -5,19 +5,19 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private ArrayList<MenuChoice> menuOptions = new ArrayList<MenuChoice>();
+    private ArrayList<MenuOption> menuOptions = new ArrayList<MenuOption>();
 
-    public Menu() {
-        initOptions();
+    public Menu(BibliotecaApp biblioteca) {
+        initOptions(biblioteca);
     }
 
-    private void initOptions() {
-        menuOptions.add(new MenuChoice("List Books"));
+    private void initOptions(BibliotecaApp biblioteca) {
+        menuOptions.add(new MenuOption("List Books", biblioteca.getBooks()));
     }
 
     public void printMenuOptions() {
         System.out.println("Select an option by entering the appropriate number:");
-        for (MenuChoice option : menuOptions) {
+        for (MenuOption option : menuOptions) {
             System.out.println(option.getName() + " - " + (menuOptions.indexOf(option) + 1));
         }
     }

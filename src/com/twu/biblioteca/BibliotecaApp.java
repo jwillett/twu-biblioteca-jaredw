@@ -11,6 +11,10 @@ public class BibliotecaApp {
         initBooks();
     }
 
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
     private void initBooks() {
         books.add(new Book("Moby Dick", "Herman Melville", 1851));
         books.add(new Book("Harry Potter", "J.K. Rowling", 1997));
@@ -21,10 +25,11 @@ public class BibliotecaApp {
     }
 
     public void promptMainMenu() {
-        Menu mainMenu = new Menu();
+        Menu mainMenu = new Menu(this);
 
         mainMenu.printMenuOptions();
 
+        // TODO: refactor this
         mainMenu.processUserInput(this);
 
     }
