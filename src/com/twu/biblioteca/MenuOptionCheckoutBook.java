@@ -34,5 +34,6 @@ public class MenuOptionCheckoutBook extends MenuOption {
         } catch (Exception e) {
             System.out.println("That book is not available.");
         }
+        System.out.println("Please select an option from the main menu.");
     }
 }

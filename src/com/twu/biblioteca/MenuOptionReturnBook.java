@@ -34,5 +34,6 @@ public class MenuOptionReturnBook extends MenuOption {
         } catch (Exception e) {
             System.out.println("That is not a valid book to return.");
         }
+        System.out.println("Please select an option from the main menu.");
     }
 }
