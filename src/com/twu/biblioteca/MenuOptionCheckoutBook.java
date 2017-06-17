@@ -19,7 +19,9 @@ public class MenuOptionCheckoutBook extends MenuOption {
         System.out.println("Please select number of book to checkout");
 
         for (Book book : books) {
-            System.out.println((books.indexOf(book) + 1) + "\t" + book.getBookInfo());
+            if (!book.isCheckedOut()) {
+                System.out.println((books.indexOf(book) + 1) + "\t" + book.getBookInfo());
+            }
         }
 
         String option = scanner.nextLine();

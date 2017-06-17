@@ -7,14 +7,14 @@ public class Menu {
 
     private ArrayList<MenuOption> menuOptions = new ArrayList<MenuOption>();
 
-    public Menu(BibliotecaApp biblioteca) {
-        initOptions(biblioteca);
+    public Menu(ArrayList<Book> books) {
+        initOptions(books);
     }
 
-    private void initOptions(BibliotecaApp biblioteca) {
-        menuOptions.add(new MenuOptionListBooks(biblioteca.getBooks()));
-        menuOptions.add(new MenuOptionCheckoutBook(biblioteca.getBooks()));
-        menuOptions.add(new MenuOptionReturnBook(biblioteca.getBooks()));
+    private void initOptions(ArrayList<Book> books) {
+        menuOptions.add(new MenuOptionListBooks(books));
+        menuOptions.add(new MenuOptionCheckoutBook(books));
+        menuOptions.add(new MenuOptionReturnBook(books));
         menuOptions.add(new MenuOptionQuit());
     }
 

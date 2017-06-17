@@ -25,7 +25,7 @@ public class BibliotecaApp {
     }
 
     private void promptMainMenu() {
-        Menu mainMenu = new Menu(this);
+        Menu mainMenu = new Menu(books);
 
         mainMenu.printMenuOptions();
 

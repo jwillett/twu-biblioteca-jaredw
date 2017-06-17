@@ -13,7 +13,7 @@ public class MenuTest {
 
     private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     private BibliotecaApp testApp = new BibliotecaApp();
-    private Menu mainMenu = new Menu(testApp);
+    private Menu mainMenu = new Menu(testApp.getBooks());
 
     @Before
     public void setUp() {
