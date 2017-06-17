@@ -23,7 +23,7 @@ public class MenuTest {
     @Test
     public void testSelectingInvalidMenuOption() {
         String expectedString = "Select a valid option!\n";
-        String userInputSim = "xyz\n2\n";
+        String userInputSim = "xyz\n4\n";
         System.setIn(new ByteArrayInputStream(userInputSim.getBytes()));
         mainMenu.processUserInput();
         assertEquals(outStream.toString(), expectedString);
@@ -33,14 +33,14 @@ public class MenuTest {
     public void testMainMenuChoosingListBooksOptionThenQuitting() {
         String expectedString1 = "Moby Dick\tHerman Melville\t1851\n";
         String expectedString2 = "Harry Potter\tJ.K. Rowling\t1997\n";
-        System.setIn(new ByteArrayInputStream("1\n2\n".getBytes()));
+        System.setIn(new ByteArrayInputStream("1\n4\n".getBytes()));
         mainMenu.processUserInput();
         assertEquals(outStream.toString(), expectedString1 + expectedString2);
     }
 
     @Test
     public void testUserChoosingQuit() {
-        System.setIn(new ByteArrayInputStream("2".getBytes()));
+        System.setIn(new ByteArrayInputStream("4".getBytes()));
         mainMenu.processUserInput();
         assertEquals(outStream.toString(), "");
     }

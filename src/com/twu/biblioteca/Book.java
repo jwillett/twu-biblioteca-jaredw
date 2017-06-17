@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+class AlreadyCheckedOutException extends Exception {}
+class NotCheckedOutException extends Exception {}
+
 public class Book {
 
     private String title;
@@ -33,8 +36,20 @@ public class Book {
         return getTitle() + '\t' + getAuthor() + '\t' + getYear();
     }
 
-    public void checkout() {
-        checkedOut = true;
+    public void checkout() throws AlreadyCheckedOutException {
+        if (!checkedOut) {
+            checkedOut = true;
+        } else {
+            throw new AlreadyCheckedOutException();
+        }
+    }
+
+    public void returnBook() throws NotCheckedOutException {
+        if (checkedOut) {
+            checkedOut = false;
+        } else {
+            throw new NotCheckedOutException();
+        }
     }
 
     public boolean isCheckedOut() {
