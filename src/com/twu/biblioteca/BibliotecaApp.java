@@ -6,18 +6,25 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     private ArrayList<Book> books = new ArrayList<Book>();
+    private ArrayList<Movie> movies = new ArrayList<Movie>();
 
     public BibliotecaApp() {
-        initBooks();
+        initLibraryItems();
     }
 
     public ArrayList<Book> getBooks() {
         return books;
     }
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
 
-    private void initBooks() {
+    private void initLibraryItems() {
         books.add(new Book("Moby Dick", "Herman Melville", 1851));
         books.add(new Book("Harry Potter", "J.K. Rowling", 1997));
+        movies.add(new Movie("The Godfather", 1972, "Francis Ford Coppola", 10));
+        movies.add(new Movie("Jurassic Park", 1993, "Steven Spielberg"));
+
     }
 
     public void printWelcomeMessage() {
@@ -25,7 +32,7 @@ public class BibliotecaApp {
     }
 
     private void promptMainMenu() {
-        Menu mainMenu = new Menu(books);
+        Menu mainMenu = new Menu(books, movies);
 
         mainMenu.printMenuOptions();
 

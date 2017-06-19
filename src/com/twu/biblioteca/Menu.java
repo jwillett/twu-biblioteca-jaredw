@@ -7,14 +7,15 @@ public class Menu {
 
     private ArrayList<MenuOption> menuOptions = new ArrayList<MenuOption>();
 
-    public Menu(ArrayList<Book> books) {
-        initOptions(books);
+    public Menu(ArrayList<Book> books, ArrayList<Movie> movies) {
+        initOptions(books, movies);
     }
 
-    private void initOptions(ArrayList<Book> books) {
+    private void initOptions(ArrayList<Book> books, ArrayList<Movie> movies) {
         menuOptions.add(new MenuOptionListBooks(books));
         menuOptions.add(new MenuOptionCheckoutBook(books));
         menuOptions.add(new MenuOptionReturnBook(books));
+        menuOptions.add(new MenuOptionListMovies(movies));
         menuOptions.add(new MenuOptionQuit());
     }
 

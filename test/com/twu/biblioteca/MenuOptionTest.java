@@ -5,7 +5,6 @@ import org.junit.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -96,7 +95,7 @@ public class MenuOptionTest {
         BibliotecaApp testApp = new BibliotecaApp();
         Book book = testApp.getBooks().get(0);
         try {
-            book.returnBook();
+            book.returnItem();
             fail();
         } catch (NotCheckedOutException shouldHappen) {
         }

@@ -29,7 +29,7 @@ public class MenuOptionReturnBook extends MenuOption {
         try {
             int optionNumber = Integer.parseInt(option);
             Book selectedBook = books.get(optionNumber - 1);
-            selectedBook.returnBook();
+            selectedBook.returnItem();
             System.out.println("Thank you for returning the book.");
         } catch (Exception e) {
             System.out.println("That is not a valid book to return.");
