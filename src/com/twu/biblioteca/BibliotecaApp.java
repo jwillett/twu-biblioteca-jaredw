@@ -1,15 +1,19 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class BibliotecaApp {
 
     private ArrayList<Book> books = new ArrayList<Book>();
     private ArrayList<Movie> movies = new ArrayList<Movie>();
+    private HashMap<String, User> userList = new HashMap<String, User>();
+    private User activeUser;
 
     public BibliotecaApp() {
         initLibraryItems();
+        initUsers();
     }
 
     public ArrayList<Book> getBooks() {
@@ -27,25 +31,22 @@ public class BibliotecaApp {
 
     }
 
+    private void initUsers() {
+        userList.put("123-4567", new User("123-4567", "password123"));
+    }
+
     public void printWelcomeMessage() {
         System.out.println("Welcome to Biblioteca!");
     }
 
     private void promptMainMenu() {
-        Menu mainMenu = new Menu(books, movies);
+
+        Menu mainMenu = new Menu(books, movies, activeUser);
 
         mainMenu.printMenuOptions();
 
         mainMenu.processUserInput();
 
-    }
-
-    public void listBooks() {
-        for (Book book : books) {
-            System.out.print(book.getTitle() + '\t');
-            System.out.print(book.getAuthor() + '\t');
-            System.out.println(book.getYear());
-        }
     }
 
     public static void main(String[] args) {
@@ -55,6 +56,38 @@ public class BibliotecaApp {
 
     private void runCustomerInterface() {
         printWelcomeMessage();
+        promptUserLogin();
         promptMainMenu();
+    }
+
+    private void promptUserLogin() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Would you like to login? (Y/N)");
+        String userInput = scanner.nextLine();
+
+        if (userInput.startsWith("Y") || userInput.startsWith("y")) {
+
+            System.out.println("Please enter your library number (Format: XXX-XXXX)");
+            String libraryNumber = scanner.nextLine();
+
+            System.out.println("Please enter your password");
+            String password = scanner.nextLine();
+
+            login(libraryNumber, password);
+
+            if (activeUser == null) {
+                System.out.println("Invalid login!");
+                promptUserLogin();
+            }
+
+        }
+    }
+
+    private void login(String libraryNumber, String password) {
+        User userLoggingIn = userList.get(libraryNumber);
+        if (userLoggingIn != null && userLoggingIn.testCredentials(libraryNumber, password)) {
+            this.activeUser = userLoggingIn;
+        }
     }
 }

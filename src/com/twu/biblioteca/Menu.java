@@ -6,18 +6,23 @@ import java.util.Scanner;
 public class Menu {
 
     private ArrayList<MenuOption> menuOptions = new ArrayList<MenuOption>();
+    private User activeUser;
 
-    public Menu(ArrayList<Book> books, ArrayList<Movie> movies) {
+    public Menu(ArrayList<Book> books, ArrayList<Movie> movies, User activeUser) {
+        this.activeUser = activeUser;
         initOptions(books, movies);
     }
 
     private void initOptions(ArrayList<Book> books, ArrayList<Movie> movies) {
+        System.out.println(activeUser);
         menuOptions.add(new MenuOptionListItems(books, "List Books"));
-        menuOptions.add(new MenuOptionCheckoutItem(books, "book"));
-        menuOptions.add(new MenuOptionReturnItem(books, "book"));
         menuOptions.add(new MenuOptionListItems(movies, "List Movies"));
-        menuOptions.add(new MenuOptionCheckoutItem(movies, "movie"));
-        menuOptions.add(new MenuOptionReturnItem(movies, "movie"));
+        if (activeUser != null) {
+            menuOptions.add(new MenuOptionCheckoutItem(books, "book", activeUser));
+            menuOptions.add(new MenuOptionReturnItem(books, "book", activeUser));
+            menuOptions.add(new MenuOptionCheckoutItem(movies, "movie", activeUser));
+            menuOptions.add(new MenuOptionReturnItem(movies, "movie", activeUser));
+        }
         menuOptions.add(new MenuOptionQuit());
     }
 

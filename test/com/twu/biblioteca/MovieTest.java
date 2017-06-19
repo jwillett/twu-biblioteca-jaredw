@@ -19,9 +19,10 @@ public class MovieTest {
     @Test
     public void testMovieCheckOut() {
         Movie jurassicMovie = new Movie("Jurassic Park", 1993, "Steven Spielberg");
+        User testUser = new User("123-4567", "password123");
         assertFalse(jurassicMovie.isCheckedOut());
         try {
-            jurassicMovie.checkout();
+            jurassicMovie.checkout(testUser);
         } catch (AlreadyCheckedOutException notExpected) {
             fail();
         }

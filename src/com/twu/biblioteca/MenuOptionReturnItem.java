@@ -7,8 +7,10 @@ public class MenuOptionReturnItem extends MenuOption {
 
     private ArrayList<? extends LibraryItem> items;
     private String itemName;
+    private User activeUser;
     
-    public MenuOptionReturnItem(ArrayList<? extends LibraryItem> items, String itemName) {
+    public MenuOptionReturnItem(ArrayList<? extends LibraryItem> items, String itemName, User activeUser) {
+        this.activeUser = activeUser;
         this.items = items;
         this.itemName = itemName;
         setName("Return " + itemName);
@@ -21,7 +23,7 @@ public class MenuOptionReturnItem extends MenuOption {
         System.out.println("Please select number of " + itemName + " to return");
 
         for (LibraryItem item : items) {
-            if (item.isCheckedOut()) {
+            if (item.isCheckedOut() && item.getHoldingCustomer().equals(activeUser)) {
                 System.out.println((items.indexOf(item) + 1) + "\t" + item.getItemInfo());
             }
         }

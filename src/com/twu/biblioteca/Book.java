@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-class AlreadyCheckedOutException extends Exception {}
-class NotCheckedOutException extends Exception {}
 
 public class Book extends LibraryItem {
 

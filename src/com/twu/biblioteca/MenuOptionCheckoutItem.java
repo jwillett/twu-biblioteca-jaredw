@@ -7,8 +7,10 @@ public class MenuOptionCheckoutItem extends MenuOption {
 
     private ArrayList<? extends LibraryItem> items;
     private String itemName;
+    private User activeUser;
 
-    public MenuOptionCheckoutItem(ArrayList<? extends LibraryItem> items, String itemName) {
+    public MenuOptionCheckoutItem(ArrayList<? extends LibraryItem> items, String itemName, User user) {
+        this.activeUser = user;
         this.items = items;
         this.itemName = itemName;
         setName("Checkout " + itemName);
@@ -31,7 +33,7 @@ public class MenuOptionCheckoutItem extends MenuOption {
         try {
             int optionNumber = Integer.parseInt(option);
             LibraryItem selectedLibraryItem = items.get(optionNumber - 1);
-            selectedLibraryItem.checkout();
+            selectedLibraryItem.checkout(activeUser);
             System.out.println("Thank you! Enjoy the " + itemName);
         } catch (Exception e) {
             System.out.println("That " + itemName + " is not available.");
