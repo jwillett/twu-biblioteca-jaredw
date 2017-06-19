@@ -23,4 +23,6 @@ public abstract class LibraryItem {
     public boolean isCheckedOut() {
         return checkedOut;
     }
+
+    public abstract String getItemInfo();
 }

@@ -20,7 +20,7 @@ public class Movie extends LibraryItem {
         this.director = director;
     }
 
-    public String getMovieInfo() {
+    public String getItemInfo() {
         return getName() + '\t' + getYear() + '\t' + getDirector() + '\t' + getRating();
     }
 

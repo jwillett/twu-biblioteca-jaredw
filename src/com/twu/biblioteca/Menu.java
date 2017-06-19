@@ -12,12 +12,12 @@ public class Menu {
     }
 
     private void initOptions(ArrayList<Book> books, ArrayList<Movie> movies) {
-        menuOptions.add(new MenuOptionListBooks(books));
-        menuOptions.add(new MenuOptionCheckoutBook(books));
-        menuOptions.add(new MenuOptionReturnBook(books));
-        menuOptions.add(new MenuOptionListMovies(movies));
-        menuOptions.add(new MenuOptionCheckoutMovie(movies));
-        menuOptions.add(new MenuOptionReturnMovie(movies));
+        menuOptions.add(new MenuOptionListItems(books, "List Books"));
+        menuOptions.add(new MenuOptionCheckoutItem(books, "book"));
+        menuOptions.add(new MenuOptionReturnItem(books, "book"));
+        menuOptions.add(new MenuOptionListItems(movies, "List Movies"));
+        menuOptions.add(new MenuOptionCheckoutItem(movies, "movie"));
+        menuOptions.add(new MenuOptionReturnItem(movies, "movie"));
         menuOptions.add(new MenuOptionQuit());
     }
 

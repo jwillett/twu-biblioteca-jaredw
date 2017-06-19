@@ -11,9 +11,9 @@ public class MovieTest {
         Movie godfatherMovie = new Movie("The Godfather", 1972, "Francis Ford Coppola", 10);
         Movie jurassicMovie = new Movie("Jurassic Park", 1993, "Steven Spielberg");
         String expectedString = "The Godfather\t1972\tFrancis Ford Coppola\t10";
-        assertEquals(expectedString, godfatherMovie.getMovieInfo());
+        assertEquals(expectedString, godfatherMovie.getItemInfo());
         expectedString = "Jurassic Park\t1993\tSteven Spielberg\tUnrated";
-        assertEquals(expectedString, jurassicMovie.getMovieInfo());
+        assertEquals(expectedString, jurassicMovie.getItemInfo());
     }
 
     @Test

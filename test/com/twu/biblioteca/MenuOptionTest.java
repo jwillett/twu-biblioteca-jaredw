@@ -27,7 +27,7 @@ public class MenuOptionTest {
     @Test
     public void testMenuOptionForListBooksListsBooks() {
         BibliotecaApp testApp = new BibliotecaApp();
-        MenuOption list_books = new MenuOptionListBooks(testApp.getBooks());
+        MenuOption list_books = new MenuOptionListItems(testApp.getBooks(), "List Books");
         list_books.execute();
         String expectedString1 = "Moby Dick\tHerman Melville\t1851\n";
         String expectedString2 = "Harry Potter\tJ.K. Rowling\t1997\n";
@@ -45,8 +45,8 @@ public class MenuOptionTest {
     public void testCheckoutBookOptionRemovesBookFromListing() {
         BibliotecaApp testApp = new BibliotecaApp();
         String expectedString = "Harry Potter\tJ.K. Rowling\t1997\n";
-        MenuOption checkout_book = new MenuOptionCheckoutBook(testApp.getBooks());
-        MenuOption list_books = new MenuOptionListBooks(testApp.getBooks());
+        MenuOption checkout_book = new MenuOptionCheckoutItem(testApp.getBooks(), "book");
+        MenuOption list_books = new MenuOptionListItems(testApp.getBooks(), "List Books");
         System.setIn(new ByteArrayInputStream("1".getBytes()));
         checkout_book.execute();
         outStream.reset();
@@ -65,8 +65,8 @@ public class MenuOptionTest {
         }
         String expectedString = "Moby Dick\tHerman Melville\t1851\n";
         expectedString += "Harry Potter\tJ.K. Rowling\t1997\n";
-        MenuOption list_books = new MenuOptionListBooks(testApp.getBooks());
-        MenuOption return_book = new MenuOptionReturnBook(testApp.getBooks());
+        MenuOption list_books = new MenuOptionListItems(testApp.getBooks(), "List Books");
+        MenuOption return_book = new MenuOptionReturnItem(testApp.getBooks(), "book");
         System.setIn(new ByteArrayInputStream("1".getBytes()));
         return_book.execute();
         outStream.reset();

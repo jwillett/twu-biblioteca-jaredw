@@ -31,10 +31,8 @@ public class Book extends LibraryItem {
         return year;
     }
 
-    public String getBookInfo() {
+    public String getItemInfo() {
         return getTitle() + '\t' + getAuthor() + '\t' + getYear();
     }
-
-
 
 }
