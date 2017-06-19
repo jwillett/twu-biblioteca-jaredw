@@ -16,6 +16,8 @@ public class Menu {
         menuOptions.add(new MenuOptionCheckoutBook(books));
         menuOptions.add(new MenuOptionReturnBook(books));
         menuOptions.add(new MenuOptionListMovies(movies));
+        menuOptions.add(new MenuOptionCheckoutMovie(movies));
+        menuOptions.add(new MenuOptionReturnMovie(movies));
         menuOptions.add(new MenuOptionQuit());
     }
 
