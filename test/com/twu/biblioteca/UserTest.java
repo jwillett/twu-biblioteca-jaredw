@@ -42,4 +42,15 @@ public class UserTest {
         assertEquals(testBook.getHoldingCustomer(), null);
     }
 
+    @Test
+    public void testGetUserInformation() {
+        User testUser = new User("123-4567", "password123");
+        testUser.setName("James");
+        testUser.setEmail("james@website.com");
+        testUser.setPhone("0412341234");
+        assertEquals(testUser.getUserInfo(), "James\tjames@website.com\t0412341234");
+    }
+
+
+
 }

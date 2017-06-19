@@ -104,4 +104,14 @@ public class MenuOptionTest {
         }
     }
 
+    @Test
+    public void testMenuOptionShowUserInfoRetrievesUserInfo() {
+        User testUser = new User("123-4567", "password123");
+        testUser.setName("James");
+        testUser.setEmail("james@website.com");
+        testUser.setPhone("0412341234");
+        MenuOption showInfo = new MenuOptionShowUserInfo(testUser);
+        showInfo.execute();
+        assertEquals(testUser.getUserInfo() + '\n', outStream.toString());
+    }
 }

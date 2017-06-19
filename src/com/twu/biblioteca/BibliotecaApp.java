@@ -32,7 +32,12 @@ public class BibliotecaApp {
     }
 
     private void initUsers() {
-        userList.put("123-4567", new User("123-4567", "password123"));
+        User user1 = new User("123-4567", "password123");
+        user1.setName("James");
+        user1.setEmail("james@website.com");
+        user1.setPhone("04 1234 1234");
+        userList.put("123-4567",user1);
+
     }
 
     public void printWelcomeMessage() {
@@ -79,8 +84,12 @@ public class BibliotecaApp {
             if (activeUser == null) {
                 System.out.println("Invalid login!");
                 promptUserLogin();
+            } else {
+                System.out.println("Successfully logged in.");
             }
 
+        } else {
+            System.out.println("Accessing system as guest.");
         }
     }
 

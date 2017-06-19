@@ -14,7 +14,6 @@ public class Menu {
     }
 
     private void initOptions(ArrayList<Book> books, ArrayList<Movie> movies) {
-        System.out.println(activeUser);
         menuOptions.add(new MenuOptionListItems(books, "List Books"));
         menuOptions.add(new MenuOptionListItems(movies, "List Movies"));
         if (activeUser != null) {
@@ -22,6 +21,7 @@ public class Menu {
             menuOptions.add(new MenuOptionReturnItem(books, "book", activeUser));
             menuOptions.add(new MenuOptionCheckoutItem(movies, "movie", activeUser));
             menuOptions.add(new MenuOptionReturnItem(movies, "movie", activeUser));
+            menuOptions.add(new MenuOptionShowUserInfo(activeUser));
         }
         menuOptions.add(new MenuOptionQuit());
     }
@@ -36,12 +36,6 @@ public class Menu {
     public void processUserInput() {
         Scanner scanner = new Scanner(System.in);
         MenuOption selectedOption = null;
-
-        // test if valid int
-        // test if int valid index
-        // if both, execute
-        // else, throw error message
-        // loop forever (only quit breaks out)
 
         while ((selectedOption == null) || (!selectedOption.getName().equals("Quit"))) {
             String option = scanner.nextLine();
